@@ -3,8 +3,9 @@ Pod::Spec.new do |s|
   s.name         = "ikaSDK"
   s.version 	 = '1.0.0'
   s.license      = { :type => 'PROPRIETARY', :file => 'LICENSE' }
+  s.homepage     = 'http://github.com/istevanovic/'
   s.authors      = { 'Ilija Stevanovic PR ikaS Beograd' => 'ikas92@gmail.com' }
-  s.summary      = ""
+  s.summary      = "ikaS PR Firebase Utilites"
   s.source 	 = { :git => "https://github.com/istevanovic/ikaSDK", :tag => s.version.to_s }
 
   base_dir = 'ikaSDK/ikaSDK'
