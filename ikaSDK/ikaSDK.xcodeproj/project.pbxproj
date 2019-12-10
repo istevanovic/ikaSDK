@@ -7,13 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D6770CE4535A592A57CA509 /* Pods_ikaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A69A939BDEFE696B6A210BF0 /* Pods_ikaSDK.framework */; };
 		EA8C183B239FB29C00E6997C /* ikaSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = EA8C1839239FB29C00E6997C /* ikaSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA8C1868239FB73C00E6997C /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C1867239FB73C00E6997C /* FirebaseDatabase.swift */; };
+		EA8C186A239FBC6400E6997C /* IkaSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C1869239FBC6400E6997C /* IkaSDK.swift */; };
+		EA8C186F239FBE5500E6997C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C186E239FBE5500E6997C /* UserManager.swift */; };
+		EA8C1871239FBE8900E6997C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C1870239FBE8900E6997C /* UserModel.swift */; };
+		EA8C1874239FD78B00E6997C /* ProductCatalogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C1873239FD78B00E6997C /* ProductCatalogManager.swift */; };
+		EA8C1876239FD7E800E6997C /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C1875239FD7E800E6997C /* ProductModel.swift */; };
+		EA8C1879239FE06000E6997C /* MessagingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C1878239FE06000E6997C /* MessagingModels.swift */; };
+		EA8C187B239FE4AB00E6997C /* MessagingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C187A239FE4AB00E6997C /* MessagingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44E44E3DFC0A3ED0EC8A9FFF /* Pods-ikaSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikaSDK.release.xcconfig"; path = "Target Support Files/Pods-ikaSDK/Pods-ikaSDK.release.xcconfig"; sourceTree = "<group>"; };
+		A69A939BDEFE696B6A210BF0 /* Pods_ikaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ikaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65B52675324F76AE5BA2ED6 /* Pods-ikaSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikaSDK.debug.xcconfig"; path = "Target Support Files/Pods-ikaSDK/Pods-ikaSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		EA8C1836239FB29C00E6997C /* ikaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ikaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8C1839239FB29C00E6997C /* ikaSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ikaSDK.h; sourceTree = "<group>"; };
 		EA8C183A239FB29C00E6997C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA8C1867239FB73C00E6997C /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
+		EA8C1869239FBC6400E6997C /* IkaSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkaSDK.swift; sourceTree = "<group>"; };
+		EA8C186E239FBE5500E6997C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		EA8C1870239FBE8900E6997C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		EA8C1873239FD78B00E6997C /* ProductCatalogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogManager.swift; sourceTree = "<group>"; };
+		EA8C1875239FD7E800E6997C /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		EA8C1878239FE06000E6997C /* MessagingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingModels.swift; sourceTree = "<group>"; };
+		EA8C187A239FE4AB00E6997C /* MessagingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D6770CE4535A592A57CA509 /* Pods_ikaSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E3EC2EF77037CBE38E1D761 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A69A939BDEFE696B6A210BF0 /* Pods_ikaSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		510D55DF3FE08DF9C69ED49A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D65B52675324F76AE5BA2ED6 /* Pods-ikaSDK.debug.xcconfig */,
+				44E44E3DFC0A3ED0EC8A9FFF /* Pods-ikaSDK.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EA8C182C239FB29C00E6997C = {
 			isa = PBXGroup;
 			children = (
 				EA8C1838239FB29C00E6997C /* ikaSDK */,
 				EA8C1837239FB29C00E6997C /* Products */,
+				510D55DF3FE08DF9C69ED49A /* Pods */,
+				1E3EC2EF77037CBE38E1D761 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,10 +86,58 @@
 		EA8C1838239FB29C00E6997C /* ikaSDK */ = {
 			isa = PBXGroup;
 			children = (
+				EA8C1866239FB72600E6997C /* FirebaseDatabase */,
 				EA8C1839239FB29C00E6997C /* ikaSDK.h */,
 				EA8C183A239FB29C00E6997C /* Info.plist */,
+				EA8C1869239FBC6400E6997C /* IkaSDK.swift */,
 			);
 			path = ikaSDK;
+			sourceTree = "<group>";
+		};
+		EA8C1866239FB72600E6997C /* FirebaseDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				EA8C186C239FBE2E00E6997C /* Usage */,
+				EA8C1867239FB73C00E6997C /* FirebaseDatabase.swift */,
+			);
+			path = FirebaseDatabase;
+			sourceTree = "<group>";
+		};
+		EA8C186C239FBE2E00E6997C /* Usage */ = {
+			isa = PBXGroup;
+			children = (
+				EA8C1877239FE04A00E6997C /* Messaging */,
+				EA8C1872239FD77900E6997C /* Product Catalog */,
+				EA8C186D239FBE3400E6997C /* User Management */,
+			);
+			path = Usage;
+			sourceTree = "<group>";
+		};
+		EA8C186D239FBE3400E6997C /* User Management */ = {
+			isa = PBXGroup;
+			children = (
+				EA8C186E239FBE5500E6997C /* UserManager.swift */,
+				EA8C1870239FBE8900E6997C /* UserModel.swift */,
+			);
+			path = "User Management";
+			sourceTree = "<group>";
+		};
+		EA8C1872239FD77900E6997C /* Product Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				EA8C1873239FD78B00E6997C /* ProductCatalogManager.swift */,
+				EA8C1875239FD7E800E6997C /* ProductModel.swift */,
+			);
+			path = "Product Catalog";
+			sourceTree = "<group>";
+		};
+		EA8C1877239FE04A00E6997C /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				EA8C1878239FE06000E6997C /* MessagingModels.swift */,
+				EA8C187A239FE4AB00E6997C /* MessagingManager.swift */,
+			);
+			path = Messaging;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +158,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA8C183E239FB29C00E6997C /* Build configuration list for PBXNativeTarget "ikaSDK" */;
 			buildPhases = (
+				BFAC3E904D08060259681694 /* [CP] Check Pods Manifest.lock */,
 				EA8C1831239FB29C00E6997C /* Headers */,
 				EA8C1832239FB29C00E6997C /* Sources */,
 				EA8C1833239FB29C00E6997C /* Frameworks */,
@@ -95,6 +184,7 @@
 				TargetAttributes = {
 					EA8C1835239FB29C00E6997C = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -126,11 +216,44 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BFAC3E904D08060259681694 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ikaSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EA8C1832239FB29C00E6997C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA8C186F239FBE5500E6997C /* UserManager.swift in Sources */,
+				EA8C1879239FE06000E6997C /* MessagingModels.swift in Sources */,
+				EA8C187B239FE4AB00E6997C /* MessagingManager.swift in Sources */,
+				EA8C1876239FD7E800E6997C /* ProductModel.swift in Sources */,
+				EA8C186A239FBC6400E6997C /* IkaSDK.swift in Sources */,
+				EA8C1871239FBE8900E6997C /* UserModel.swift in Sources */,
+				EA8C1874239FD78B00E6997C /* ProductCatalogManager.swift in Sources */,
+				EA8C1868239FB73C00E6997C /* FirebaseDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +382,9 @@
 		};
 		EA8C183F239FB29C00E6997C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D65B52675324F76AE5BA2ED6 /* Pods-ikaSDK.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P35YJXV6XZ;
@@ -276,6 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ikas.ikaSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -283,7 +409,9 @@
 		};
 		EA8C1840239FB29C00E6997C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44E44E3DFC0A3ED0EC8A9FFF /* Pods-ikaSDK.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P35YJXV6XZ;
