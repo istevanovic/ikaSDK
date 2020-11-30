@@ -14,7 +14,7 @@ public class ProductCatalogManager {
 
     public static let sharedInstance = ProductCatalogManager()
     private init() {
-        productTableIdentifier = "product"
+        productTableIdentifier = "offer"
         productCatalog = []
     }
 
@@ -24,7 +24,7 @@ public class ProductCatalogManager {
 
     private var productTableIdentifier: String
 
-    private(set) var productCatalog: [Product]
+    private(set) public var productCatalog: [Product]
 
     public func getAvailableProducts(completionHandler: OperationCompletionHandler?) {
         productCatalog = []
@@ -44,6 +44,17 @@ public class ProductCatalogManager {
             completionHandler?(.failure(error))
         }
     }
+    
+    public func productForId(id: String) -> Product? {
+        return productCatalog.first { product -> Bool in
+            product.productId == id
+        }
+    }
+    
+    fileprivate func updateProductInfo(updates: [AnyHashable: Any], completionHandler: OperationCompletionHandler?) {
+        // TODO
+         completionHandler?(.success(nil))
+    }
 }
 
 extension ProductCatalogManager {
@@ -56,6 +67,18 @@ extension ProductCatalogManager {
                     fulfill(())
                 }
             })
+        })
+    }
+    
+    public func updateProductInfo(productId: String, updates: [AnyHashable: Any]) -> Promise<Void> {
+        return Promise(on: .global(qos: .userInitiated), { fulfill, reject in
+            fulfill(())
+        })
+    }
+    
+    public func updateProductImage(productId: String, image: UIImage) -> Promise<Void> {
+        return Promise(on: .global(qos: .userInitiated), { fulfill, reject in
+            fulfill(())
         })
     }
 }

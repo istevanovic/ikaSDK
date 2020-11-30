@@ -9,13 +9,14 @@
 import Foundation
 
 public class Product {
-    var productDict: NSDictionary
-    var productId: String?
-    var name: String?
-    var description: String?
-    var address: String?
-    var images: [String]?
-    var mainImage: String?
+    public var productDict: NSDictionary
+    public var productId: String?
+    public var name: String?
+    public var description: String?
+    public var address: String?
+    public var images: [String]?
+    public var mainImage: String?
+    public var category: String?
 
     public init(with dict: NSDictionary) {
         productDict = dict
@@ -27,6 +28,7 @@ public class Product {
             images?.append(photo)
         }
         mainImage = dict["imageUrl"] as? String
+        category = dict["category"] as? String
     }
 
 }

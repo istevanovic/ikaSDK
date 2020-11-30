@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import FirebaseCore
+import FirebaseAuth
+import Promises
 
 public enum Usage {
     case userManagement
@@ -15,17 +18,38 @@ public enum Usage {
 }
 
 public class IkaSDK {
-
+    
     public static let sharedInstance = IkaSDK()
     private init() {
         self.usage = []
     }
     private(set) var usage: [Usage]
-
+    
     public func setup(usage: [Usage]) {
         self.usage = usage
     }
-
-
     
+    public var isLoggedIn: Bool {
+        return Auth.auth().currentUser != nil
+    }
+    
+    public var userId: String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
+    public func refreshData() -> Promise<Void> {
+        return Promise<Void>(on: .global(qos: .userInitiated)) { fulfill, reject in
+                all(UserManager.sharedInstance.getUserInfo(),
+                ProductCatalogManager.sharedInstance.getAvailableProducts())
+                .then { _ in
+                    fulfill(())
+            } .catch { error in
+                reject(error)
+            }
+        }
+    }
+    
+    public func logout() {
+        try? Auth.auth().signOut()
+    }
 }

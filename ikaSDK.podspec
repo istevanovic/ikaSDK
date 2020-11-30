@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.dependency 'Firebase/Analytics'
   s.dependency 'Firebase/Auth'
   s.dependency 'Firebase/Database'
+  s.dependency 'Firebase/Storage'
   s.dependency 'PromisesSwift'
-
+  s.dependency 'SDWebImage'
 end

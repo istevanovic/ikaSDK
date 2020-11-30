@@ -10,4 +10,5 @@ target 'ikaSDK' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
 	pod 'PromisesSwift'
+	pod 'SDWebImage'
 end
