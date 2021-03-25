@@ -17,9 +17,16 @@ public class Product {
     public var images: [String]?
     public var mainImage: String?
     public var category: String?
+    public var phoneNumber: String?
+    public var canWhatsapp: Bool
+    public var canCall: Bool
+    public var canSms: Bool
+    public var facebookUrl :String?
+    public var instagramHandle: String?
 
     public init(with dict: NSDictionary) {
         productDict = dict
+        description = dict["description"] as? String
         productId = dict["id"] as? String
         name = dict["name"] as? String
         address = dict["location"] as? String
@@ -29,6 +36,12 @@ public class Product {
         }
         mainImage = dict["imageUrl"] as? String
         category = dict["category"] as? String
+        phoneNumber = dict["phoneNumber"] as? String
+        instagramHandle = dict["instagramUrl"] as? String
+        facebookUrl = dict["facebookUrl"] as? String
+        canCall = dict["phoneCall"] as? Bool ?? true
+        canSms = dict["sms"] as? Bool ?? true
+        canWhatsapp = dict["whatsApp"] as? Bool ?? true
     }
 
 }

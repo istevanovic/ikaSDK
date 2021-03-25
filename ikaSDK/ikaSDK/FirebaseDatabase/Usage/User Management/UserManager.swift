@@ -62,6 +62,7 @@ open class UserManager {
 
 extension UserManager {
     public func getUserInfo(userId: String? = IkaSDK.sharedInstance.userId) -> Promise<UserModel> {
+        FirebaseDatabase.sharedInstance.removeStoredCacheData()
         return Promise(on: .global(qos: .userInitiated), { fulfill, reject in
             self.getUserInfo(userId: (userId ?? IkaSDK.sharedInstance.userId)!, completionHandler: { (result) in
                 if case .failure(let error) = result {

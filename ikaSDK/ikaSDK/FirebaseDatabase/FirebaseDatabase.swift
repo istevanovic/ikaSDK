@@ -31,12 +31,14 @@ public class FirebaseDatabase {
     private init() {
         databaseReference = Database.database().reference()
         storeRef = Storage.storage().reference()
+        removeStoredCacheData()
     }
+    
     
     fileprivate func readData(pathString: String, completionHandler: @escaping OperationCompletionHandler) {
         databaseReference.child(pathString).observeSingleEvent(of: .value, with: { snapshot in
             guard let responseDict = snapshot.value as? NSDictionary else {
-                completionHandler(.success(nil))
+                completionHandler(.success([0:snapshot.value]))
                 return
             }
             completionHandler(.success(responseDict))
@@ -132,7 +134,7 @@ extension FirebaseDatabase {
         })
     }
     
-    func uploadImage(image: UIImage, photoUrl: String, completionHandler: @escaping OperationCompletionHandler) {
+    public func uploadImage(image: UIImage, photoUrl: String, completionHandler: @escaping OperationCompletionHandler) {
         var data = Data()
         data = image.jpegData(compressionQuality: 0.8)!
         let metaData = StorageMetadata()
@@ -162,17 +164,56 @@ extension FirebaseDatabase {
     
     public func uploadMultipleImages(imagesAndImageUrls: [AnyHashable : Any]) -> Promise<[String: String]> {
         return Promise(on: .global(qos: .userInitiated), { fulfill, reject in
+            let dispatchCount = imagesAndImageUrls
+            for keyValuePair in imagesAndImageUrls {
+                if let imageForUpload = keyValuePair.value as? UIImage {
+                    let uuid = UUID().uuidString
+                    self.uploadImage(image: imageForUpload, photoUrl: uuid) { _ in
+                        
+                    }
+                }
+            }
             fulfill([:])
         })
     }
 }
 
+extension FirebaseDatabase {
+    func removeStoredCacheData() {
+        UserDefaults.standard.setValue([:], forKey: "cachedImages")
+    }
+    func storeImage(url: String, data: Data) {
+        var cachedImages = UserDefaults.standard.dictionary(forKey: "cachedImages") ?? [:]
+        if cachedImages.count >= 50 {
+            if let keyForRemoval = cachedImages.keys.randomElement() {
+                cachedImages.removeValue(forKey: keyForRemoval)
+            }
+        }
+        cachedImages[url] = data
+        UserDefaults.standard.setValue(cachedImages, forKey: "cachedImages")
+    }
+    
+    func fetchStoredImage(url: String) -> Data? {
+        if let cachedImages = UserDefaults.standard.dictionary(forKey: "cachedImages"),
+           let cachedData = cachedImages[url] as? Data {
+            return cachedData
+        }
+        return nil
+    }
+}
+
 public extension UIImageView {
-    public func setupImageFromFirebaseURl(url: String) {
-        let reference = Storage.storage().reference().child("images\(url)")
-        reference.downloadURL { url, _ in
-            if url != nil {
-                self.sd_setImage(with: url, completed: nil)
+    func setupImageFromFirebaseURl(url: String) {
+        if let storedImage = FirebaseDatabase.sharedInstance.fetchStoredImage(url: url) {
+            self.image = UIImage(data: storedImage)
+            return
+        }
+        let reference = Storage.storage().reference().child(url).getData(maxSize: 1048576) { data, _ in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
+                    FirebaseDatabase.sharedInstance.storeImage(url: url, data: data)
+                }
             }
         }
     }

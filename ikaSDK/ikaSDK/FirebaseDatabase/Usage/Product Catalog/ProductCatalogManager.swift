@@ -59,6 +59,7 @@ public class ProductCatalogManager {
 
 extension ProductCatalogManager {
     public func getAvailableProducts() -> Promise<Void> {
+        FirebaseDatabase.sharedInstance.removeStoredCacheData()
         return Promise(on: .global(qos: .userInitiated), { fulfill, reject in
             self.getAvailableProducts(completionHandler: { (result) in
                 if case .failure(let error) = result {
@@ -72,13 +73,25 @@ extension ProductCatalogManager {
     
     public func updateProductInfo(productId: String, updates: [AnyHashable: Any]) -> Promise<Void> {
         return Promise(on: .global(qos: .userInitiated), { fulfill, reject in
-            fulfill(())
+            let productPathString = "\(self.productTableIdentifier)/\(productId)"
+            FirebaseDatabase.sharedInstance.updateData(pathString: productPathString, updates: updates)
+                .always {
+                    self.getAvailableProducts().always {
+                        fulfill(())
+                    }
+                }
         })
     }
     
     public func updateProductImage(productId: String, image: UIImage) -> Promise<Void> {
         return Promise(on: .global(qos: .userInitiated), { fulfill, reject in
-            fulfill(())
+            FirebaseDatabase.sharedInstance.uploadImage(image: image, photoUrl: "\(productId)") { _ in
+                self.updateProductInfo(productId: productId, updates: ["imageUrl": "images/\(productId)"]).always {
+                    self.getAvailableProducts().always {
+                        fulfill(())
+                    }
+                }
+            }
         })
     }
 }

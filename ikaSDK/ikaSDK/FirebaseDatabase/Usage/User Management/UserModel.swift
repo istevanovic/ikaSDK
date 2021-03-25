@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 public class UserModel {
     public var userInfoDict: NSDictionary
-    public var userId: String?
+    public var userId: String? {
+        return Auth.auth().currentUser?.uid
+    }
     public var fullName: String?
     public var email: String
     public var phoneNumber: String?
@@ -18,7 +21,6 @@ public class UserModel {
     public var profilePicture: String?
     public var address: String?
     public var photos: [String]?
-    public var productCatalogOwnerId: String?
     public var userName: String?
     public var admin: Bool?
 
@@ -27,11 +29,11 @@ public class UserModel {
         age = dict["age"] as? String
         address = dict["location"] as? String
         fullName = dict["name"] as? String
-        phoneNumber = dict["number"] as? String
+        phoneNumber = dict["phone"] as? String
         email = dict["email"] as! String
         profilePicture = dict["profilePic"] as? String
         userName = dict["username"] as? String
-        productCatalogOwnerId = dict["adminId"] as? String
-        userId = dict["id"] as? String
+        photos = dict["photos"] as? [String]
+        admin = dict["isAdmin"] as? Bool
     }
 }

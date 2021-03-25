@@ -42,7 +42,15 @@ public class IkaSDK {
                 all(UserManager.sharedInstance.getUserInfo(),
                 ProductCatalogManager.sharedInstance.getAvailableProducts())
                 .then { _ in
-                    fulfill(())
+                    FirebaseDatabase.sharedInstance.readData(pathString: "version")
+                        .then { dict in
+                            guard let version = dict?[0] as? Int,
+                                  version == 1 else {
+                                //TODO: FORCE UPDATE
+                                return
+                            }
+                            fulfill(())
+                        }
             } .catch { error in
                 reject(error)
             }
